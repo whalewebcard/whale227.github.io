@@ -175,8 +175,8 @@
                 <div class="whale-swim mb-6">
                     <img src="https://i.ibb.co/k268SxR2/WHALE3.png" alt="Whale Loading" class="w-24 h-24 mx-auto object-contain">
                 </div>
-                <h3 class="text-2xl font-bold text-sky-600 mb-2">กำลังส่งข้อมูล...</h3>
-                <p class="text-gray-500 text-sm">น้องวาฬกำลังส่งข้อมูลไปบันทึก โปรดรอสักครู่ครับ</p>
+                <h3 class="text-2xl font-bold text-sky-600 mb-2">กำลังเดินทางไปหา เซิร์ฟเวอร์...</h3>
+                <p class="text-gray-500 text-sm">น้องวาฬกำลังส่งข้อมูลและอัปโหลดรูปภาพ อย่างตั้งใจ โปรดรอสักครู่ครับ</p>
                 <div class="bg-sky-50 rounded-full px-4 py-2 inline-flex items-center gap-2 mb-2">
                     <span class="loader border-sky-500 border-t-white"></span>
                     <span class="text-sky-600 font-bold text-xs">กำลังบันทึกข้อมูล</span>
@@ -249,8 +249,9 @@
                 return false;
             }
 
+            // แก้ไขข้อความแจ้งเตือนเมื่อยังไม่ได้กดยอมรับข้อตกลง
             if (!document.getElementById('consent_checkbox').checked) {
-                showWarning('กรุณากดยอมรับข้อตกลงก่อนส่งข้อมูลครับ');
+                showWarning('กรุณาอ่านและกดยอมรับข้อตกลงความเป็นส่วนตัวก่อนส่งข้อมูลครับ');
                 return false;
             }
 
@@ -291,18 +292,16 @@
                 // ส่งข้อมูลเข้าสู่ Google Apps Script
                 await fetch(SCRIPT_URL, {
                     method: 'POST',
-                    // ใช้ mode: 'no-cors' เพื่อหลีกเลี่ยง CORS error ในเบื้องต้น (แต่จะไม่ทราบ response)
                     mode: 'no-cors', 
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: params.toString()
                 });
 
-                // จำลองสถานะสำเร็จเนื่องจากโหมด no-cors จะไม่อ่าน response กลับมา
                 setTimeout(() => {
                     uploadingModal.classList.add('hidden');
                     uploadingModal.classList.remove('flex');
                     showSuccess();
-                }, 1500);
+                }, 2500); // เพิ่มเวลาเล็กน้อยให้ผู้ใช้ได้อ่านข้อความน้องวาฬ
 
             } catch (error) {
                 console.error('Error:', error);
