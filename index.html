@@ -59,11 +59,19 @@
 </head>
 <body class="min-h-screen py-10 px-4">
     <div class="max-w-2xl mx-auto">
-        <!-- Logo & Header -->
-        <div class="text-center mb-10">
-            <img src="https://i.ibb.co/k268SxR2/WHALE3.png" alt="Whale Logo" class="w-32 h-32 mx-auto mb-4 drop-shadow-lg object-contain">
-            <h1 class="text-3xl font-bold text-sky-600 mb-2">Whale Web Card</h1>
-            <p class="text-sky-400 text-sm">สร้างความทรงจำดีๆ ผ่านเว็บการ์ดสุดน่ารัก (Create special memories)</p>
+        <!-- Logo & Header (Modified according to request) -->
+        <div class="text-center mb-8 flex flex-col items-center">
+            <!-- Increased Logo size to w-80 h-80 and refined shadow -->
+            <img src="https://i.ibb.co/FLX32bKg/3.png" alt="Whale Logo" class="w-80 h-80 mb-0 drop-shadow-[0_20px_20px_rgba(125,211,252,0.4)] object-contain">
+            
+            <!-- Title with tight spacing to the larger logo -->
+            <h1 class="text-4xl font-bold text-sky-600 -mt-6 mb-1">Whale Web Card</h1>
+            
+            <!-- Slogan with balanced spacing -->
+            <p class="text-sky-400 text-base leading-snug">
+                สร้างความทรงจำดีๆ ผ่านเว็บการ์ดสุดน่ารัก<br>
+                <span class="text-sm opacity-80">(Create special memories)</span>
+            </p>
         </div>
 
         <!-- Form Container -->
@@ -179,7 +187,7 @@
         <div id="uploadingModal" class="fixed inset-0 bg-sky-900/40 backdrop-blur-sm hidden items-center justify-center p-4 z-[60]">
             <div class="bg-white rounded-3xl p-10 max-w-sm w-full text-center shadow-2xl animate-pop">
                 <div class="whale-swim mb-6">
-                    <img src="https://i.ibb.co/k268SxR2/WHALE3.png" alt="Whale Loading" class="w-24 h-24 mx-auto object-contain">
+                    <img src="https://i.ibb.co/FLX32bKg/3.png" alt="Whale Loading" class="w-24 h-24 mx-auto object-contain">
                 </div>
                 <h3 class="text-2xl font-bold text-sky-600 mb-2">กำลังเดินทางไปหา เซิร์ฟเวอร์...</h3>
                 <p class="text-gray-500 text-sm">น้องวาฬกำลังส่งข้อมูลและอัปโหลดรูปภาพ อย่างตั้งใจ โปรดรอสักครู่ครับ</p>
@@ -255,7 +263,6 @@
                 return false;
             }
 
-            // แก้ไขข้อความแจ้งเตือนเมื่อยังไม่ได้กดยอมรับข้อตกลง
             if (!document.getElementById('consent_checkbox').checked) {
                 showWarning('กรุณาอ่านและกดยอมรับข้อตกลงความเป็นส่วนตัวก่อนส่งข้อมูลครับ');
                 return false;
@@ -307,7 +314,7 @@
                     uploadingModal.classList.add('hidden');
                     uploadingModal.classList.remove('flex');
                     showSuccess();
-                }, 2500); // เพิ่มเวลาเล็กน้อยให้ผู้ใช้ได้อ่านข้อความน้องวาฬ
+                }, 2500);
 
             } catch (error) {
                 console.error('Error:', error);
